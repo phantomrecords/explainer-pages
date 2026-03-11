@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>Explainer Pages Repository</title>
-
   <style>
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
@@ -14,80 +13,72 @@
       margin: auto;
       line-height: 1.6;
     }
-
     h1 {
       border-bottom: 1px solid #ccc;
       padding-bottom: 0.3em;
     }
-
     ul {
       margin-top: 1rem;
     }
-
     footer {
       margin-top: 3rem;
       font-size: 0.85rem;
       color: #777;
     }
   </style>
-
 </head>
-
 <body>
 
-<h1>Explainer Pages</h1>
+  <h1>Explainer Pages</h1>
 
   <h3>Repository Navigation</h3>
+  <ul>
+    <li>Project Overview 👉 <a href="./README.md">README</a></li>
+    <li>Explainer Page Standard 👉 <a href="./explainer-standard.md">explainer-standard.md</a></li>
+    <li>Contribution Guidelines 👉 <a href="./CONTRIBUTING.md">CONTRIBUTING.md</a></li>
+    <li>Security Policy 👉 <a href="./SECURITY.md">SECURITY.md</a></li>
+    <li>License 👉 <a href="./LICENSE">Creative Commons Attribution 4.0</a></li>
+  </ul>
 
-<ul>
+  <p>
+    This repository contains a collection of <strong>Explainer Pages</strong> —
+    simple, transparent HTML documents that explain the identity, purpose,
+    and relationships of organizations, brands, and projects.
+  </p>
 
-<li>Project Overview 👉 <a href="./README.md">README</a></li>
-<li>Explainer Page Standard 👉 <a href="./explainer-standard.md">explainer-standard.md</a></li>
-<li>Contribution Guidelines 👉 <a href="./CONTRIBUTING.md">CONTRIBUTING.md</a></li>
-<li>Security Policy 👉 <a href="./SECURITY.md">SECURITY.md</a></li>
-<li>License 👉 <a href="./LICENSE">Creative Commons Attribution 4.0</a></li>
-</ul>
+  <h3>Available Explainer Pages</h3>
+  <ul id="explainer-list">
+    <li>Loading explainer pages...</li>
+  </ul>
 
-<p>
-This repository contains a collection of <strong>Explainer Pages</strong> —
-simple, transparent HTML documents that explain the identity, purpose,
-and relationships of organizations, brands, and projects.
-</p>
+  <h3>Maintainer</h3>
+  <p>
+    Michael Widener II<br>
+    <a href="https://michael-widener.com/">https://michael-widener.com/</a>
+  </p>
 
-<p>
-These pages are designed to provide clear factual explanations separate
-from marketing websites. Each page serves as a long-term reference
-document linking to the official website of the organization described.
-</p>
+  <footer>
+    &copy; 2026 Explainer Pages Repository
+  </footer>
 
-<h3>Available Explainer Pages</h3>
+  <script>
+    fetch('./explainers.json')
+      .then(response => response.json())
+      .then(data => {
+        const list = document.getElementById('explainer-list');
+        list.innerHTML = '';
 
-<ul>
-
-<li>
-Auto Metrics, Inc. (Chico Auto Repair) 👉
-<a href="./auto-metrics/">/auto-metrics/</a>
-</li>
-
-</ul>
-
-<h3>Repository</h3>
-
-<p>
-This project is maintained as part of the <strong>Explainer Pages</strong>
-repository for transparent documentation of organizations and projects.
-</p>
-
-<h3>Maintainer</h3>
-
-<p>
-Michael Widener II<br>
-<a href="https://michael-widener.com/">https://michael-widener.com/</a>
-</p>
-
-<footer>
-&copy; 2026 Explainer Pages Repository
-</footer>
+        data.forEach(item => {
+          const li = document.createElement('li');
+          li.innerHTML = `${item.name} 👉 <a href="${item.path}">${item.path}</a>${item.description ? ' — ' + item.description : ''}`;
+          list.appendChild(li);
+        });
+      })
+      .catch(() => {
+        document.getElementById('explainer-list').innerHTML =
+          '<li>Unable to load explainer list.</li>';
+      });
+  </script>
 
 </body>
 </html>
