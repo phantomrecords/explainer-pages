@@ -1,8 +1,29 @@
 cff-version: 1.2.0
 title: Explainer Pages
-author:
+message: >
+  If you reference this repository, please cite it using the information below.
+
+type: dataset
+
+authors:
   - family-names: Widener
     given-names: Michael
     suffix: II
-website: https://michael-widener.com
+    website: https://michael-widener.com
+
+repository-code: https://github.com/phantomrecords/explainer-pages
+url: https://github.com/phantomrecords/explainer-pages
+
 license: CC-BY-4.0
+
+abstract: >
+  A repository of transparent explainer pages documenting organizations,
+  brands, and projects. Each page provides factual context describing
+  ownership, history, and relationships between related domains and initiatives.
+
+keywords:
+  - documentation
+  - transparency
+  - brand history
+  - web archive
+  - explainer pages
